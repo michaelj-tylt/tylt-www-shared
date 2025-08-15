@@ -6,9 +6,10 @@ import { usePostHog } from 'posthog-js/react';
 
 interface HeaderProps {
   scrolled?: boolean;
+  children?: React.ReactNode;
 }
 
-export function Header({ scrolled = false }: HeaderProps) {
+export function Header({ scrolled = false, children }: HeaderProps) {
   const posthog = usePostHog();
 
   const handleDownloadClick = () => {
@@ -49,23 +50,27 @@ export function Header({ scrolled = false }: HeaderProps) {
             scrolled ? "text-sm" : "text-base"
           }`}
         >
-          <a
-            href={process.env.NEXT_PUBLIC_MAIN_URL}
-            className={`text-white hover:text-zinc-400 transition-colors duration-200 relative ${
-              scrolled ? "text-sm" : "text-base"
-            }`}
-          >
-            <span className="relative">About Tylt</span>
-          </a>
-          <a
-            href="#download"
-            className={`text-white hover:text-blue-400 transition-colors duration-200 relative ${
-              scrolled ? "text-sm" : "text-base"
-            }`}
-            onClick={handleDownloadClick}
-          >
-            <span className="relative">Download</span>
-          </a>
+          {children || (
+            <>
+              <a
+                href={process.env.NEXT_PUBLIC_MAIN_URL}
+                className={`text-white hover:text-zinc-400 transition-colors duration-200 relative ${
+                  scrolled ? "text-sm" : "text-base"
+                }`}
+              >
+                <span className="relative">About Tylt</span>
+              </a>
+              <a
+                href="#download"
+                className={`text-white hover:text-blue-400 transition-colors duration-200 relative ${
+                  scrolled ? "text-sm" : "text-base"
+                }`}
+                onClick={handleDownloadClick}
+              >
+                <span className="relative">Download</span>
+              </a>
+            </>
+          )}
         </nav>
       </div>
     </header>
