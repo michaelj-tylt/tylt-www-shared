@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { usePostHog } from 'posthog-js/react';
 import { Download } from 'lucide-react';
+import theme from '@/theme';
 
 interface HeaderProps {
   scrolled?: boolean;
@@ -63,7 +64,7 @@ export function Header({ scrolled = false, children }: HeaderProps) {
               </a>
               <a
                 href="#download"
-                className={`flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30 text-white transition-all duration-200 ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r ${theme.classes.gradient} hover:opacity-90 text-white transition-all duration-200 ${
                   scrolled ? "text-sm" : "text-base"
                 }`}
                 onClick={handleDownloadClick}
