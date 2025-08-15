@@ -9,9 +9,10 @@ import theme from '@/theme';
 interface HeaderProps {
   scrolled?: boolean;
   children?: React.ReactNode;
+  homeUrl?: string;
 }
 
-export function Header({ scrolled = false, children }: HeaderProps) {
+export function Header({ scrolled = false, children, homeUrl }: HeaderProps) {
   const posthog = usePostHog();
 
   const handleDownloadClick = () => {
@@ -52,6 +53,16 @@ export function Header({ scrolled = false, children }: HeaderProps) {
             scrolled ? "text-sm" : "text-base"
           }`}
         >
+          {homeUrl && (
+            <a
+              href={homeUrl}
+              className={`text-zinc-300 hover:text-white transition-colors duration-200 relative ${
+                scrolled ? "text-sm" : "text-base"
+              }`}
+            >
+              <span className="relative">Home</span>
+            </a>
+          )}
           {children || (
             <>
               <a
