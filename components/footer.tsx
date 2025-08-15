@@ -1,9 +1,14 @@
 
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Mail } from 'lucide-react'
 
-export function Footer() {
+interface FooterProps {
+  children?: React.ReactNode;
+}
+
+export function Footer({ children }: FooterProps = {}) {
   return (
     <footer className="w-full flex items-center justify-center relative text-white">
       <div className="max-w-6xl mx-auto px-6">
@@ -29,26 +34,30 @@ export function Footer() {
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-white mb-6">Products</h3>
               
-              <a 
-                href={process.env.NEXT_PUBLIC_MAIN_URL}
-                className="block text-zinc-400 hover:text-zinc-300 transition-colors"
-              >
-                About Tylt
-              </a>
-              
-              <a 
-                href={process.env.NEXT_PUBLIC_WEBTESTER_URL}
-                className="block text-purple-400 hover:text-purple-300 transition-colors"
-              >
-                WebTester
-              </a>
-              
-              <a 
-                href={process.env.NEXT_PUBLIC_AUTOTESTER_URL}
-                className="block text-green-400 hover:text-green-300 transition-colors"
-              >
-                AutoTester
-              </a>
+              {children || (
+                <>
+                  <a 
+                    href={process.env.NEXT_PUBLIC_MAIN_URL}
+                    className="block text-zinc-400 hover:text-zinc-300 transition-colors"
+                  >
+                    About Tylt
+                  </a>
+                  
+                  <a 
+                    href={process.env.NEXT_PUBLIC_WEBTESTER_URL}
+                    className="block text-purple-400 hover:text-purple-300 transition-colors"
+                  >
+                    WebTester
+                  </a>
+                  
+                  <a 
+                    href={process.env.NEXT_PUBLIC_AUTOTESTER_URL}
+                    className="block text-green-400 hover:text-green-300 transition-colors"
+                  >
+                    AutoTester
+                  </a>
+                </>
+              )}
             </div>
           </div>
         </div>
