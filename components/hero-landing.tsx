@@ -2,7 +2,9 @@ import { AirbnbSlideshow } from "@/shared/airbnb-slideshow";
 // import { DemoButton } from "@/shared/demo-button";
 // import Image from "next/image";
 import { useEffect, useState, RefObject, useRef } from "react";
-import theme from '../theme';
+
+// Import theme from the parent app - this will be resolved by the app's theme
+import theme from '@/theme';
 
 interface HeroProps {
   primaryText: string;
