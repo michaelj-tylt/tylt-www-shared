@@ -23,24 +23,17 @@ export function PageLayout({
 
   useEffect(() => {
     const handleScroll = () => {
-      // Get the scroll container element
-      const scrollContainer = document.querySelector('.scroll-container');
-      if (!scrollContainer) return;
-      
-      const scrollPosition = scrollContainer.scrollTop;
+      const scrollPosition = window.scrollY;
       const firstViewportHeight = window.innerHeight;
       setScrolled(scrollPosition > firstViewportHeight);
     };
 
-    const scrollContainer = document.querySelector('.scroll-container');
-    if (scrollContainer) {
-      scrollContainer.addEventListener('scroll', handleScroll);
-      return () => scrollContainer.removeEventListener('scroll', handleScroll);
-    }
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <div className="h-screen w-full relative flex flex-col">
+    <div className="min-h-screen w-full relative">
       {/* Background layers */}
       <div className="fixed inset-0 z-0 bg-gradient-to-br from-[#0a0e1a] to-[#0f172a]" />
       <div className="fixed inset-0 z-0 opacity-60">
@@ -66,8 +59,8 @@ export function PageLayout({
       </Header>
       
       {/* Scrollable Content */}
-      <div className="scroll-container overflow-y-scroll snap-mandatory snap-y scroll-smooth flex-1" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-        <div className="relative z-10 flex flex-col gap-24 sm:gap-32 lg:gap-0">
+      <div className="overflow-y-scroll snap-mandatory snap-y scroll-smooth" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', height: '100vh' }}>
+        <div className="relative z-10 flex flex-col gap-24 sm:gap-32 lg:gap-0 pt-20">
           {children}
         </div>
       </div>
