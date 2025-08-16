@@ -24,12 +24,12 @@ export function Header({ scrolled = false, children, homeUrl }: HeaderProps) {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+      className={`sticky top-0 z-50 w-full transition-all duration-300 backdrop-blur-sm ${
         scrolled ? "py-1" : "py-4"
       }`}
       style={{
         height: scrolled ? '40px' : 'auto',
-        backgroundColor: scrolled ? 'rgba(0, 0, 0, 0.2)' : 'rgba(0, 0, 0, 0.8)'
+        backgroundColor: scrolled ? 'rgba(0, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0.9)'
       }}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 transition-all duration-300">
@@ -56,7 +56,7 @@ export function Header({ scrolled = false, children, homeUrl }: HeaderProps) {
           {homeUrl && (
             <a
               href={homeUrl}
-              className={`text-zinc-300 hover:text-white transition-colors duration-200 relative ${
+              className={`text-zinc-300 ${theme.classes.primaryHover} transition-colors duration-200 relative ${
                 scrolled ? "text-sm" : "text-base"
               }`}
             >
@@ -67,7 +67,7 @@ export function Header({ scrolled = false, children, homeUrl }: HeaderProps) {
             <>
               <a
                 href={process.env.NEXT_PUBLIC_MAIN_URL}
-                className={`text-white hover:text-zinc-400 transition-colors duration-200 relative ${
+                className={`text-white ${theme.classes.primaryHover} transition-colors duration-200 relative ${
                   scrolled ? "text-sm" : "text-base"
                 }`}
               >
