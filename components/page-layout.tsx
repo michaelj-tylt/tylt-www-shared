@@ -23,13 +23,20 @@ export function PageLayout({
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
+      // Get the scroll container element
+      const scrollContainer = document.querySelector('.scroll-container');
+      if (!scrollContainer) return;
+      
+      const scrollPosition = scrollContainer.scrollTop;
       const firstViewportHeight = window.innerHeight;
       setScrolled(scrollPosition > firstViewportHeight);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const scrollContainer = document.querySelector('.scroll-container');
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleScroll);
+      return () => scrollContainer.removeEventListener('scroll', handleScroll);
+    }
   }, []);
 
   return (
@@ -59,7 +66,7 @@ export function PageLayout({
       </Header>
       
       {/* Scrollable Content */}
-      <div className="overflow-y-scroll snap-mandatory snap-y scroll-smooth" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', height: '100vh' }}>
+      <div className="scroll-container overflow-y-scroll snap-mandatory snap-y scroll-smooth" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', height: '100vh' }}>
         <div className="relative z-10 flex flex-col gap-24 sm:gap-32 lg:gap-0 pt-20">
           {children}
         </div>
