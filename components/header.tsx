@@ -10,9 +10,10 @@ interface HeaderProps {
   children?: React.ReactNode;
   homeUrl?: string;
   theme?: any;
+  appName?: string;
 }
 
-export function Header({ scrolled = false, children, homeUrl, theme }: HeaderProps) {
+export function Header({ scrolled = false, children, homeUrl, theme, appName }: HeaderProps) {
   const posthog = usePostHog();
   
   // Import default tylt theme if none provided
@@ -46,7 +47,9 @@ export function Header({ scrolled = false, children, homeUrl, theme }: HeaderPro
             height={48}
             className="transition-all duration-300"
           />
-          {/* out logo IS our name, stop addit ing as text again! */}
+          {appName && (
+            <span className="text-white text-xl font-semibold">{appName}</span>
+          )}
         </Link>
 
         {/* Navigation */}

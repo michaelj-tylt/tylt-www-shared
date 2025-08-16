@@ -11,6 +11,7 @@ interface PageLayoutProps {
   auroraColors?: string[];
   pixelColors?: string;
   theme?: any;
+  appName?: string;
 }
 
 export function PageLayout({ 
@@ -19,7 +20,8 @@ export function PageLayout({
   headerChildren,
   auroraColors = ["#5227FF", "#1E40AF", "#0F172A"],
   pixelColors = "#5227FF,#3B82F6,#1E3A8A",
-  theme
+  theme,
+  appName
 }: PageLayoutProps) {
   const [scrolled, setScrolled] = useState(false);
 
@@ -63,7 +65,7 @@ export function PageLayout({
       </div>
 
       {/* Header */}
-      <Header scrolled={scrolled} homeUrl={homeUrl} theme={theme}>
+      <Header scrolled={scrolled} homeUrl={homeUrl} theme={theme} appName={appName}>
         {headerChildren}
       </Header>
       
