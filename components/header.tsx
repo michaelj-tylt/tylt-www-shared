@@ -25,40 +25,33 @@ export function Header({ scrolled = false, children, homeUrl }: HeaderProps) {
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 backdrop-blur-sm ${
-        scrolled ? "py-1 scale-[0.8]" : "py-4 scale-100"
+        scrolled ? "py-1" : "py-4"
       }`}
       style={{
-        height: scrolled ? '40px' : 'auto',
         backgroundColor: scrolled ? 'rgba(0, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0.9)'
       }}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 transition-all duration-300">
+      <div className={`max-w-7xl mx-auto flex items-center justify-between px-6 transition-all duration-300 ${
+        scrolled ? "scale-[0.8]" : "scale-100"
+      }`}>
         {/* Logo */}
-        <Link href="/" className={`flex items-center transition-all duration-300 hover:opacity-80 ${
-            scrolled ? "gap-2" : "gap-3"
-          }`}>
+        <Link href="/" className="flex items-center gap-3 transition-all duration-300 hover:opacity-80">
           <Image
             src="/logo.png"
             alt="Tylt Logo"
-            width={scrolled ? 28 : 48}
-            height={scrolled ? 28 : 48}
+            width={48}
+            height={48}
             className="transition-all duration-300"
           />
           {/* out logo IS our name, stop addit ing as text again! */}
         </Link>
 
         {/* Navigation */}
-        <nav
-          className={`flex items-center gap-6 transition-all duration-300 ${
-            scrolled ? "text-sm" : "text-base"
-          }`}
-        >
+        <nav className="flex items-center gap-6 transition-all duration-300 text-base">
           {homeUrl && (
             <a
               href={homeUrl}
-              className={`text-zinc-300 ${theme.classes.primaryHover} transition-colors duration-200 relative ${
-                scrolled ? "text-sm" : "text-base"
-              }`}
+              className={`text-zinc-300 ${theme.classes.primaryHover} transition-colors duration-200 relative`}
             >
               <span className="relative">Home</span>
             </a>
@@ -67,17 +60,13 @@ export function Header({ scrolled = false, children, homeUrl }: HeaderProps) {
             <>
               <a
                 href={process.env.NEXT_PUBLIC_MAIN_URL}
-                className={`text-white ${theme.classes.primaryHover} transition-colors duration-200 relative ${
-                  scrolled ? "text-sm" : "text-base"
-                }`}
+                className={`text-white ${theme.classes.primaryHover} transition-colors duration-200 relative`}
               >
                 <span className="relative">About Tylt</span>
               </a>
               <a
                 href="#download"
-                className={`flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r ${theme.classes.gradient} hover:opacity-90 text-white transition-all duration-200 ${
-                  scrolled ? "text-sm" : "text-base"
-                }`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full text-white transition-all duration-200 hover:${theme.classes.accentBg}`}
                 onClick={handleDownloadClick}
               >
                 <Download size={16} className="text-white" />
