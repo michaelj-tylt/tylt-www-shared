@@ -10,6 +10,7 @@ interface PageLayoutProps {
   headerChildren?: React.ReactNode;
   auroraColors?: string[];
   pixelColors?: string;
+  theme?: any;
 }
 
 export function PageLayout({ 
@@ -17,7 +18,8 @@ export function PageLayout({
   homeUrl, 
   headerChildren,
   auroraColors = ["#5227FF", "#1E40AF", "#0F172A"],
-  pixelColors = "#5227FF,#3B82F6,#1E3A8A"
+  pixelColors = "#5227FF,#3B82F6,#1E3A8A",
+  theme
 }: PageLayoutProps) {
   const [scrolled, setScrolled] = useState(false);
 
@@ -61,7 +63,7 @@ export function PageLayout({
       </div>
 
       {/* Header */}
-      <Header scrolled={scrolled} homeUrl={homeUrl}>
+      <Header scrolled={scrolled} homeUrl={homeUrl} theme={theme}>
         {headerChildren}
       </Header>
       
