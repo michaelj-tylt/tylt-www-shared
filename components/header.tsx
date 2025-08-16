@@ -65,12 +65,6 @@ export function Header({ scrolled = false, children, homeUrl, theme, appName }: 
           {children || (
             <>
               <a
-                href={process.env.NEXT_PUBLIC_MAIN_URL}
-                className={`text-white ${activeTheme.classes.primaryHover} transition-colors duration-200 relative`}
-              >
-                <span className="relative">About Tylt</span>
-              </a>
-              <a
                 href="#download"
                 className={`flex items-center gap-2 px-4 py-2 rounded-full text-white transition-all duration-200 hover:${activeTheme.classes.accentBg}`}
                 onClick={handleDownloadClick}
