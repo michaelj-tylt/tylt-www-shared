@@ -25,7 +25,7 @@ export function Header({ scrolled = false, children, homeUrl }: HeaderProps) {
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 backdrop-blur-sm ${
-        scrolled ? "py-1" : "py-4"
+        scrolled ? "py-1 scale-[0.8]" : "py-4 scale-100"
       }`}
       style={{
         height: scrolled ? '40px' : 'auto',
