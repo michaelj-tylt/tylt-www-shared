@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { createPortal } from 'react-dom';
-import theme from '@/theme';
+import theme from '@/shared/themes/tylt';
 
 interface SlideData {
   slide: number;
